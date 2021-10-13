@@ -9,9 +9,9 @@
    TextInput,
    TouchableOpacity
  } from 'react-native';
- const Otp_input=()=>{
+ const Otp_input=({navigation})=>{
    return(
-     <View style={styles.mainContainer}>
+     <View style={{backgroundColor:'white', width:Dimensions.get('window').width,justifyContent:'center',alignItems:'center'}}>
         <Image
           style={styles.tinyLogo}
           source={require('../components/icon.png')}/>
@@ -19,52 +19,41 @@
           <Text style={styles.text}>Enter OTP</Text>
           <View style={{flexDirection:'row'}}>
             <TextInput
-                style={styles.input}
-                keyboardType="numeric"
-                maxLength={1}
+            style={styles.input}
+            keyboardType="numeric"
             />
             <TextInput
                 style={styles.input}
                 keyboardType="numeric"
-                maxLength={1}
             />
             <TextInput
                 style={styles.input}
                 keyboardType="numeric"
-                maxLength={1}
             />
             <TextInput
                 style={styles.input}
                 keyboardType="numeric"
-                maxLength={1}
             />
         </View> 
           <Text style={styles.subtext}>Did'nt received an OTP? Resend</Text>  
         </View>
         <TouchableOpacity
           style={styles.bottom_container}
-          underlayColor='#fff'>
+          underlayColor='#fff'
+          onPress={()=>{navigation.navigate('Orders')}}>
           <Text style={styles.label}>NEXT</Text>
         </TouchableOpacity>
     </View> 
    );
  }
  const styles = StyleSheet.create({
-    mainContainer:{
-      backgroundColor:'white',
-      width:Dimensions.get('window').width,
-      height:Dimensions.get('window').height,
-      display:'flex',
-      justifyContent:'center',
-      alignItems:'center'
-    },
      input:{
         backgroundColor:'#cbcbcb',
         width:'13%',
         borderRadius:5,
         marginLeft:1,
         marginRight:10,
-        textAlign:'center'
+        
      },
      bottom_container:{
       alignSelf: 'flex-end',
@@ -94,13 +83,17 @@
     main:{
       backgroundColor:'white',
       width:Dimensions.get('window').width,
+      height:Dimensions.get('window').height,
       display:'flex',
       justifyContent:'center',
       alignItems:'center'
     },
     tinyLogo: {
         display:'flex',
-        top:"25%"
+        marginTop:'auto',
+        marginBottom:'auto',
+        marginLeft:'auto',
+        marginRight:'auto'
       }
   });
  

@@ -13,7 +13,7 @@
    Button
  } from 'react-native';
  import DropDownPicker from 'react-native-dropdown-picker';
-const AssignDriver=()=>{
+const AssignDriver=({navigation})=>{
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
@@ -66,7 +66,8 @@ const AssignDriver=()=>{
         </View>
         <TouchableOpacity
           style={styles.bottom_container}
-          underlayColor='#fff'>
+          underlayColor='#fff'
+          onPress={()=>{navigation.navigate('OrderAssigned')}}>
           <Text style={styles.label}>ASSIGN DRIVER</Text>
         </TouchableOpacity>
     </>

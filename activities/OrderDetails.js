@@ -15,12 +15,11 @@
  //import RNBounceable from "react-native-bouncy-checkbox";
  import { List } from 'react-native-paper';
  import AcceptDeclineModal from './AcceptDeclineModal';
-const OrderDetails=()=>{
+const OrderDetails=({navigation})=>{
     const [expanded, setExpanded] = React.useState(true);
     const handlePress = () => setExpanded(!expanded);
    return(
      <>
-       
         <View style={{display:'flex',width:'100%',height:'100%',paddingLeft:'5%',paddingRight:'5%'}}>
             <View style={{marginTop:'5%'}}>
                 <View style={{flexDirection:'row'}}>
@@ -100,12 +99,15 @@ const OrderDetails=()=>{
         <View style={styles.bottom_container}>
             <TouchableOpacity
                 underlayColor='#fff'
-                style={{flex:1}}>
+                style={{flex:1}}
+                onPress={()=>{navigation.navigate('OrderDetailsFinal')}}>
+                {/* onPress={()=>{navigation.navigate('OrderAssigned')}}> */}
                 <Text style={styles.label}>ACCEPT</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 underlayColor='#fff'
-                style={{flex:1,borderLeftWidth:1,borderColor:'#fff'}}>
+                style={{flex:1,borderLeftWidth:1,borderColor:'#fff'}}
+                onPress={()=>{navigation.navigate('AssignDriver')}}>
                 <Text style={styles.label}>REJECT</Text>
             </TouchableOpacity>
         </View>

@@ -15,9 +15,9 @@
    Button,
    TouchableOpacity
  } from 'react-native';
- const Splash=()=>{
+ const Mobile_input=({navigation })=>{
    return(
-     <View style={styles.mainContainer}>
+    <View style={{backgroundColor:'white', width:Dimensions.get('window').width,justifyContent:'center',alignItems:'center',height:Dimensions.get('window').height}}>
       <Image
           style={styles.tinyLogo}
           source={require('../components/icon.png')}
@@ -31,23 +31,16 @@
         placeholder="mobile number"
         placeholderTextColor="#7C7C7C"/>   
       </View>
-    <TouchableOpacity
+      <TouchableOpacity
           style={styles.bottom_container}
-          underlayColor='#fff'>
+          underlayColor='#fff'
+          onPress={()=>{navigation.navigate('Otp_input')}}>
           <Text style={styles.label}>NEXT</Text>
-    </TouchableOpacity>
-    </View>
+      </TouchableOpacity>
+  </View>
    );
  }
  const styles = StyleSheet.create({
-    mainContainer:{
-      backgroundColor:'white',
-      width:Dimensions.get('window').width,
-      height:Dimensions.get('window').height,
-      display:'flex',
-      justifyContent:'center',
-      alignItems:'center'
-    },
      input:{
         borderColor:"#9DC44D",
         borderWidth:1,
@@ -58,9 +51,10 @@
      },
      bottom_container:{
       alignSelf: 'flex-end',
-      position: 'absolute',
-      bottom: 0,
+      marginTop:'auto',
       width:Dimensions.get('window').width,
+      height:100,
+      marginBottom:'5%'
    },
     label:{
       backgroundColor:'#9DC44D',
@@ -70,7 +64,6 @@
       textAlign:'center',
       color:'#ffffff'
   },
-
      text:{
         display:'flex',
         marginBottom:'17%',
@@ -81,14 +74,15 @@
       backgroundColor:'white',
       width:Dimensions.get('window').width,
       display:'flex',
-      justifyContent:'center',
-      alignItems:'center'
+      alignItems:'center',
+      flex:1,
+      marginTop:'10%'
     },
     tinyLogo: {
         display:'flex',
-        bottom:'30%'
+        marginTop:'20%'
       }
   });
  
- export default Splash;
+ export default Mobile_input;
  

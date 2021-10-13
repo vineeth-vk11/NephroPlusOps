@@ -134,7 +134,6 @@ const Rejected = () => (
 export default function Orders() {
 
   return (
-    <NavigationContainer>
       <Tab.Navigator
         screenOptions={{
           tabBarLabelStyle: {width:'100%',fontWeight:'bold'},
@@ -145,7 +144,6 @@ export default function Orders() {
         <Tab.Screen name="Approved" component={Approved} />
         <Tab.Screen name="Rejected" component={Rejected} />
       </Tab.Navigator>
-    </NavigationContainer>
   );
 }
 const styles = StyleSheet.create({

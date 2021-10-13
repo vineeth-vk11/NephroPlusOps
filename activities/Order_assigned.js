@@ -10,9 +10,9 @@
    TouchableOpacity,
  } from 'react-native';
  
- const OrderAssigned=()=>{
+ const OrderAssigned=({navigation})=>{
    return(
-     <View style={{height:'100%',justifyContent:'center',alignContent:'center'}}>
+     <View style={{height:'100%',justifyContent:'center',alignContent:'center',backgroundColor:'white'}}>
         <View style={styles.main}>
             <Image
             style={styles.tinyLogo}
@@ -21,7 +21,8 @@
         </View>
         <TouchableOpacity
           style={styles.bottom_container}
-          underlayColor='#fff'>
+          underlayColor='#fff'
+          onPress={()=>{navigation.navigate('OrderDetailsFinal')}}>
           <Text style={styles.label}>{"ASSIGN DRIVER"}</Text>
         </TouchableOpacity>
     </View>
