@@ -101,14 +101,15 @@ const OrderDetails = ({ navigation }) => {
                 <TouchableOpacity
                     underlayColor='#fff'
                     style={{ flex: 1 }}
-                    onPress={() => { }}>
-                    {/* onPress={()=>{navigation.navigate('OrderAssigned')}}> */}
+                    // onPress={() => { }}>
+                    onPress={()=>{navigation.navigate('OrderAssigned')}}>
                     <Text style={styles.label}>ACCEPT</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     underlayColor='#fff'
                     style={{ flex: 1, borderLeftWidth: 1, borderColor: '#fff' }}
-                    onPress={() => { }}>
+                    // onPress={() => { }}>
+                    onPress={()=>{navigation.navigate('AssignDriver')}}>
                     <Text style={styles.label}>REJECT</Text>
                 </TouchableOpacity>
             </View>

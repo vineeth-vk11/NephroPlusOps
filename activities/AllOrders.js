@@ -78,7 +78,7 @@ const DATA = [
 
 const RenderItem = (props) => (
   <TouchableOpacity style={{ height: 85, borderColor: props.item.borderColor, borderWidth: 1, borderRadius: 5, width: 380, marginTop: 10, alignContent: 'center', justifyContent: 'center', paddingLeft: '3%', paddingRight: '3%' }}
-    onPress={() => { }}>
+    onPress={() => {props.navigation.navigate('OrderDetails')}}>
     <View style={{ flexDirection: 'row' }}>
       <Text style={{ fontSize: 14, fontWeight: "bold" }}>{props.item.title}</Text>
       <Text style={{ fontSize: 14, fontWeight: "bold", marginLeft: 'auto' }}>{'\u20B9'}{props.item.price}</Text>
@@ -106,7 +106,7 @@ export default function AllOrders(props) {
       <SafeAreaView style={styles.list}>
         <FlatList
           data={DATA}
-          renderItem={({ item }) => <RenderItem item={item} />}
+          renderItem={({item,navigation}) => <RenderItem item={item} navigation={props.navigation}/>}
           keyExtractor={item => item.id}
         />
       </SafeAreaView >

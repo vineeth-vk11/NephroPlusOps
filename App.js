@@ -2,6 +2,7 @@
 import React from 'react';
 import {
   View,
+  Button
 } from 'react-native';
 
 
@@ -32,17 +33,40 @@ const App = () => {
   return (
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator
-        initialRouteName="Orders"
-        screenOptions={{ headerShown: false, gestureEnabled: false }}
+        initialRouteName="MobileInput"
+        // screenOptions={{ headerShown: false, gestureEnabled: false }}   options={{headerTitleAlign:'center',headerShown:false}}
+        screenOptions={{headerTitleAlign:'center'}}
       >
-        <Stack.Screen name="MobileInput" component={MobileInput} />
-        <Stack.Screen name="OtpInput" component={OtpInput} />
-        <Stack.Screen name="Orders" component={Orders} />
-        <Stack.Screen name="OrderDetails" component={OrderDetails} />
-        <Stack.Screen name="AllOrders" component={AllOrders} />
-        <Stack.Screen name="AssignDriver" component={AssignDriver} />
-        <Stack.Screen name="OrderAccepted" component={OrderAccepted} />
-        <Stack.Screen name="OrderAssigned" component={OrderAssigned} />
+        <Stack.Screen name="MobileInput" component={MobileInput} options={{headerShown:false,title:"Mobile Input",}}/>
+        <Stack.Screen name="OtpInput" component={OtpInput} options={{headerShown:false, title:"Otp Input",}}/>
+        <Stack.Screen name="Orders" component={Orders} 
+         options={({ navigation }) => ({
+          title:"Orders",
+          headerRight: () => (
+            <Button
+              onPress={()=>{navigation.navigate('AllOrders')}}
+              title="AO"
+              color="#000"
+            />
+          ),
+          headerBackVisible:false
+        })}/>
+        <Stack.Screen name="OrderDetails" component={OrderDetails} options={{title:"Order Details",}}/>
+        <Stack.Screen name="AllOrders" component={AllOrders}
+        options={({ navigation }) => ({
+          title:"All Orders",
+          headerRight: () => (
+            <Button
+              onPress={()=>{navigation.navigate('AllOrders')}}
+              title="AO"
+              color="#000"
+            />
+          ),
+          headerBackVisible:false
+        })}/>
+        <Stack.Screen name="AssignDriver" component={AssignDriver} options={{title:"Assign Driver"}}/>
+        <Stack.Screen name="OrderAccepted" component={OrderAccepted} options={{title:"Order Accepted",}}/>
+        <Stack.Screen name="OrderAssigned" component={OrderAssigned} options={{title:"Order Assigned",headerBackVisible:false}}/>
 
       </Stack.Navigator>
     </NavigationContainer>

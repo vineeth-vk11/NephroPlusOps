@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, useWindowDimensions, FlatList, SafeAreaView, StyleSheet, Text, TextInput } from 'react-native';
+import { View, useWindowDimensions, FlatList, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity } from 'react-native';
 import { TabView, SceneMap } from 'react-native-tab-view';
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
@@ -77,61 +77,64 @@ const DATA = [
   },
 ];
 
-const renderItem = ({ item }) => (
-  <View style={{ height: 85, borderColor: item.borderColor, borderWidth: 1, borderRadius: 5, width: 380, marginTop: 10, alignContent: 'center', justifyContent: 'center', paddingLeft: '3%', paddingRight: '3%' }}>
-    <View style={{ flexDirection: 'row' }}>
-      <Text style={{ fontSize: 14, fontWeight: "bold" }}>{item.title}</Text>
-      <Text style={{ fontSize: 14, fontWeight: "bold", marginLeft: 'auto' }}>{'\u20B9'}{item.price}</Text>
-    </View>
-    <View style={{ flexDirection: 'row', marginTop: 5 }}>
-      <View style={{ marginRight: 'auto' }}>
-        <Text style={{ fontSize: 10, color: '#828282' }}>{item.package}</Text>
-        <Text style={{ fontSize: 10, color: '#828282', marginTop: 3 }}>location: {item.location}</Text>
+const RenderItem = (props) => (
+  <TouchableOpacity style={{height:85,borderColor: props.item.borderColor,borderWidth:1,borderRadius:5,width:380,marginTop:10,alignContent:'center',justifyContent:'center',paddingLeft:'3%',paddingRight:'3%'}}
+     onPress={()=>{props.navigation.navigate('OrderDetails')}}>
+    <View>
+      <View style={{ flexDirection: 'row' }}>
+        <Text style={{ fontSize: 14, fontWeight: "bold" }}>{props.item.title}</Text>
+        <Text style={{ fontSize: 14, fontWeight: "bold", marginLeft: 'auto' }}>{'\u20B9'}{props.item.price}</Text>
       </View>
-      <View style={{ marginLeft: 'auto' }}>
-        <Text style={{ fontSize: 10, color: '#828282', marginLeft: 'auto' }}>status: {item.status}</Text>
-        <Text style={{ fontSize: 10, color: '#828282', marginLeft: 'auto', marginTop: 2 }}>{item.date}</Text>
+      <View style={{ flexDirection: 'row', marginTop: 5 }}>
+        <View style={{ marginRight: 'auto' }}>
+          <Text style={{ fontSize: 10, color: '#828282' }}>{props.item.package}</Text>
+          <Text style={{ fontSize: 10, color: '#828282', marginTop: 3 }}>location: {props.item.location}</Text>
+        </View>
+        <View style={{ marginLeft: 'auto' }}>
+          <Text style={{ fontSize: 10, color: '#828282', marginLeft: 'auto' }}>status: {props.item.status}</Text>
+          <Text style={{ fontSize: 10, color: '#828282', marginLeft: 'auto', marginTop: 2 }}>{props.item.date}</Text>
+        </View>
       </View>
     </View>
-  </View>
+  </TouchableOpacity>
 );
 
-const New = () => (
+const New = (props) => (
   <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#fff' }}>
     <TextInput style={{ backgroundColor: '#fff', borderColor: '#9DC44D', borderWidth: 1, width: 380, marginTop: 10, borderRadius: 15, height: 38, paddingLeft: 15 }}
       placeholder="Search an order" />
     <SafeAreaView style={styles.list}>
       <FlatList
         data={DATA}
-        renderItem={renderItem}
+        renderItem={({item,navigation}) => <RenderItem item={item} navigation={props.navigation}/>}
         keyExtractor={item => item.id}
       />
     </SafeAreaView >
   </View>
 );
 
-const Approved = () => (
+const Approved = (props) => (
   <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#fff' }}>
     <TextInput style={{ backgroundColor: '#fff', borderColor: '#9DC44D', borderWidth: 1, width: 380, marginTop: 10, borderRadius: 15, height: 38, paddingLeft: 15 }}
       placeholder="Search an order" />
     <SafeAreaView style={styles.list}>
       <FlatList
         data={DATA}
-        renderItem={renderItem}
+        renderItem={({item,navigation}) => <RenderItem item={item} navigation={props.navigation}/>}
         keyExtractor={item => item.id}
       />
     </SafeAreaView >
   </View>
 );
 
-const Rejected = () => (
+const Rejected = (props) => (
   <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#fff' }}>
     <TextInput style={{ backgroundColor: '#fff', borderColor: '#9DC44D', borderWidth: 1, width: 380, marginTop: 10, borderRadius: 15, height: 38, paddingLeft: 15 }}
       placeholder="Search an order" />
     <SafeAreaView style={styles.list}>
       <FlatList
         data={DATA}
-        renderItem={renderItem}
+        renderItem={({item,navigation}) => <RenderItem item={item} navigation={props.navigation}/>}
         keyExtractor={item => item.id}
       />
     </SafeAreaView >
@@ -140,7 +143,7 @@ const Rejected = () => (
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function Orders() {
+export default function Orders({navigation}) {
 
   return (
     <SafeAreaView style={styles.screen}>

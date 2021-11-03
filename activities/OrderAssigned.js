@@ -23,7 +23,7 @@ const OrderAssigned = ({ }) => {
         style={styles.bottom_container}
         underlayColor='#fff'
         onPress={() => { }}>
-        <Text style={styles.label}>{"ASSIGN DRIVER"}</Text>
+        <Text style={styles.label}>{"GO TO ORDERS"}</Text>
       </TouchableOpacity>
     </View>
   );
